@@ -1,13 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.UserDto.UserResDto;
 import com.example.demo.dao.UserDao;
 import com.example.demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 
@@ -26,10 +24,9 @@ public class UserController {
         return "Hello World";
     }
 
-    @GetMapping("/user")
-    public User addAndGet() throws SQLException {
-        userDao.add(new User("1", "Kyeongrok", "1234"));
-        return userDao.findById("1");
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResDto> findById(@PathVariable("id") String id) {
+        return ResponseEntity.ok(UserResDto.form(userDao.findById(id)));
     }
 
     @DeleteMapping("/user")
