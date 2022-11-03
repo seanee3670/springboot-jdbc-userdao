@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.UserDto.UserResDto;
+import com.example.demo.dao.HospitalDao;
 import com.example.demo.dao.UserDao;
+import com.example.demo.domain.Hospital;
 import com.example.demo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,7 @@ public class UserController {
     public ResponseEntity<UserResDto> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(UserResDto.form(userDao.findById(id)));
     }
+
 
     @DeleteMapping("/user")
     public ResponseEntity<Integer> deleteAll() {

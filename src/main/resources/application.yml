@@ -1,8 +1,8 @@
 server:
-  port: 8081
+  port: 8080
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/likelion-db
-    username: root
-    password: 1q2w3e4r
+    username: { DB_USER }
+    password: { DB_PASSWORD }
